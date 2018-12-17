@@ -5,6 +5,8 @@ using UnityEngine;
 public class Player : CharacterBase
 {
     private float m_attackRange = 15;
+    [SerializeField]
+    private GameObject m_hitBoxPrefab; //unused
 
     protected override void Start()
     {

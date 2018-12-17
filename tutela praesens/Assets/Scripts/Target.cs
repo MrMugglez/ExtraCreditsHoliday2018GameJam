@@ -47,7 +47,7 @@ public class Target : MonoBehaviour
         GameManager.instance.RoundNext.AddListener(Clear);
         GameManager.instance.RoundEnd.AddListener(Clear);
 
-        m_speed = m_speed + GameManager.instance.Level;
+        m_speed = m_speed + (GameManager.instance.Level / 2.0f);
     }
 
     // Update is called once per frame
@@ -80,6 +80,14 @@ public class Target : MonoBehaviour
                 {
 
                 }
+            }
+        }
+        // Otherwise if you miss you mark suffer the consequences.
+        else
+        {
+            if (Input.GetButtonDown("Defence") || Input.GetButtonDown("Attack"))
+            {
+                GameManager.instance.Score -= 10;
             }
         }
         if (Vector2.Distance(m_moveDestination, transform.position) <= m_distanceToDestination)

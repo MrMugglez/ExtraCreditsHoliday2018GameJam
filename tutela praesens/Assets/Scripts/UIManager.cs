@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
         }
         else if (SceneManager.GetActiveScene().buildIndex == GameManager.GAMEOVER)
         {
-            Level.text = string.Format("FINAL SCORE: {0}", GameManager.instance.Score.ToString());
+            Score.text = string.Format("FINAL SCORE: \n{0}", GameManager.instance.Score.ToString());
         }
     }
 }
