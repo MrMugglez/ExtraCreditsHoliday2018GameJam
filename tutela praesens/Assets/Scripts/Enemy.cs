@@ -24,7 +24,7 @@ public class Enemy : CharacterBase
         base.Update();
         if (IsDead)
         {
-            GameManager.instance.Score += 100;
+            GameManager.instance.Score += 1000;
             GameManager.instance.NextFight();
             GameManager.instance.Level++;
             Destroy(gameObject);

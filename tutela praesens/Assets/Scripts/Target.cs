@@ -61,7 +61,7 @@ public class Target : MonoBehaviour
                 if (Input.GetButtonDown("Defence") && inputType == GameManager.States.Attack)
                 {
                     Destroy(this.gameObject);
-                    GameManager.instance.Score += 10;
+                    GameManager.instance.Score += 100;
                 }
                 else if (Input.GetButtonDown("Attack") && inputType == GameManager.States.Defence)
                 {
@@ -73,7 +73,7 @@ public class Target : MonoBehaviour
                 if (Input.GetButtonDown("Attack") && inputType == GameManager.States.Attack)
                 {
                     GameManager.instance.EnemyScript.CurrentHealth--;
-                    GameManager.instance.Score += 10;
+                    GameManager.instance.Score += 100;
                     Destroy(this.gameObject);
                 }
                 else if (Input.GetButtonDown("Defence") && inputType == GameManager.States.Defence)
