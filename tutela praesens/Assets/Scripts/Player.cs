@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Player : CharacterBase
 {
+    private float m_attackRange = 15;
+
     protected override void Start()
     {
         base.Start();
@@ -15,7 +17,7 @@ public class Player : CharacterBase
         Vector2 direction = RandomNormalizedVector();
         Vector2 offset = direction * m_offsetDistanceMultiplier;
         var attack = Instantiate(TargetPrefab, (Vector2)transform.position + offset, Quaternion.identity);
-        attack.GetComponent<Target>().Init(GameManager.States.Attack, alignment, direction);
+        attack.GetComponent<Target>().Init(GameManager.States.Attack, alignment, direction, direction * m_attackRange);
     }
 
     protected override void Update()
@@ -25,6 +27,8 @@ public class Player : CharacterBase
         {
 
             GameManager.instance.GameOver = true;
+            GameManager.instance.RoundEnd.Invoke();
         }
+
     }
 }

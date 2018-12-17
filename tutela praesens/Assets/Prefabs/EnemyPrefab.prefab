@@ -55,9 +55,10 @@ MonoBehaviour:
   TargetPrefab: {fileID: 1011271455372104, guid: 2d8356ccf793d5a48ad1404a92d16c59,
     type: 2}
   m_maxHealth: 3
-  m_offsetDistanceMultiplier: 5
+  m_offsetDistanceMultiplier: 10
   m_counterChance: 0
-  m_attackTimer: 2
+  m_attackTimerMin: 2
+  m_attackTimerMax: 4
 --- !u!212 &212155870972932514
 SpriteRenderer:
   m_ObjectHideFlags: 1

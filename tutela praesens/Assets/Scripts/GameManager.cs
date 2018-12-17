@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
     public const int CREDITS = 2;
     public const int GAMEOVER = 3;
 
+    public int Level = 1;
+    public int Score = 0;
+
     [HideInInspector]
     public bool GameOver = true;
 
@@ -20,15 +23,17 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public UnityEvent RoundStart;
     [HideInInspector]
+    public UnityEvent RoundNext;
+    [HideInInspector]
     public UnityEvent RoundEnd;
 
     public GameObject PlayerPrefab;
     public GameObject EnemyPrefab;
 
     [SerializeField]
-    private GameObject m_player;
+    private static GameObject m_player;
     [SerializeField]
-    private GameObject m_enemy;
+    private static GameObject m_enemy;
 
     public Player PlayerScript { get { return m_player.GetComponent<Player>(); } }
     public Enemy EnemyScript { get { return m_enemy.GetComponent<Enemy>(); } }
@@ -67,17 +72,12 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
         GameOver = true;
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-        if (SceneManager.GetActiveScene().buildIndex == GAME) // Debugging/In Editor Purposes
+        /*if (SceneManager.GetActiveScene().buildIndex == GAME) // Debugging/In Editor Purposes
         {
             // LoadSceneMode doesn't matter, just so game will still work if I start from game scene, instead of mainmenu.
-            GameStart(SceneManager.GetActiveScene(), LoadSceneMode.Single); 
-        }       
-        SceneManager.sceneLoaded += GameStart; 
+            GameStart(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+        }*/
+        SceneManager.sceneLoaded += SceneLoad;
     }
 
     //this isn't being used anywhere...
@@ -105,16 +105,48 @@ public class GameManager : MonoBehaviour
 
     // Added to scene load event, gets called any time a scene is loaded. 
     // Only checking to see if in the GAME scene.
-    public void GameStart(Scene scene, LoadSceneMode mode)
+    public void SceneLoad(Scene scene, LoadSceneMode mode)
     {
         if (scene.buildIndex == GAME)
         {
-            m_player = Instantiate(PlayerPrefab);
-            m_enemy = Instantiate(EnemyPrefab);
+            Debug.Log("Let the games begin!");
+            if (m_player != null)
+            {
+                Destroy(m_player);
+            }
+            SpawnPlayer();
+            if (m_enemy != null)
+            {
+                Destroy(m_enemy);
+            }
+            SpawnEnemy();
             GameOver = false;
+            Level = 1;
+            Score = 0;
             RoundEnd.AddListener(EndFight);
             Invoke("StartFight", m_timeTillStart);
         }
+        else
+        {
+            if (m_enemy != null)
+            {
+                Destroy(m_enemy);
+            }
+            if (m_player != null)
+            {
+                Destroy(m_player);
+            }
+        }
+    }
+
+    void SpawnPlayer()
+    {
+        m_player = Instantiate(PlayerPrefab);
+    }
+
+    void SpawnEnemy()
+    {
+        m_enemy = Instantiate(EnemyPrefab);
     }
 
     //Invokes all methods listening for the RoundStart event.
@@ -123,7 +155,14 @@ public class GameManager : MonoBehaviour
         RoundStart.Invoke();
     }
 
-    // Loads GAMEOVER scene.
+    public void NextFight()
+    {
+        RoundNext.Invoke();
+        SpawnEnemy();
+        EnemyScript.CanAttack(true);
+    }
+
+    // Listens for RoundEnd event. Loads GAMEOVER scene.
     void EndFight()
     {
         //calls method after elapsed time.

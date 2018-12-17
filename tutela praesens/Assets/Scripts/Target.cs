@@ -21,14 +21,19 @@ public class Target : MonoBehaviour
     [SerializeField]
     private float m_speed = 5;
     private Vector2 m_moveDirection = Vector2.zero;
+    [SerializeField]
+    private Vector2 m_moveDestination;
+    [SerializeField]
+    private float m_distanceToDestination = 2.5f;
 
     public bool IsMouseOver { get; private set; }
 
-    public void Init(GameManager.States type, GameManager.Identifiers id, Vector2 direction)
+    public void Init(GameManager.States type, GameManager.Identifiers id, Vector2 direction, Vector2 destination)
     {
         inputType = type;
         identity = id;
         m_moveDirection = direction;
+        m_moveDestination = destination;
         switch (identity)
         {
             case GameManager.Identifiers.Player:
@@ -39,6 +44,10 @@ public class Target : MonoBehaviour
                 break;
         }
         GetComponent<SpriteRenderer>().sprite = feedBackImage;
+        GameManager.instance.RoundNext.AddListener(Clear);
+        GameManager.instance.RoundEnd.AddListener(Clear);
+
+        m_speed = m_speed + GameManager.instance.Level;
     }
 
     // Update is called once per frame
@@ -52,6 +61,7 @@ public class Target : MonoBehaviour
                 if (Input.GetButtonDown("Defence") && inputType == GameManager.States.Attack)
                 {
                     Destroy(this.gameObject);
+                    GameManager.instance.Score += 10;
                 }
                 else if (Input.GetButtonDown("Attack") && inputType == GameManager.States.Defence)
                 {
@@ -62,6 +72,8 @@ public class Target : MonoBehaviour
             {
                 if (Input.GetButtonDown("Attack") && inputType == GameManager.States.Attack)
                 {
+                    GameManager.instance.EnemyScript.CurrentHealth--;
+                    GameManager.instance.Score += 10;
                     Destroy(this.gameObject);
                 }
                 else if (Input.GetButtonDown("Defence") && inputType == GameManager.States.Defence)
@@ -70,7 +82,25 @@ public class Target : MonoBehaviour
                 }
             }
         }
+        if (Vector2.Distance(m_moveDestination, transform.position) <= m_distanceToDestination)
+        {
+            DestinationReached();
+        }
 	}
+    private void DestinationReached()
+    {
+        if (identity == GameManager.Identifiers.Enemy && inputType == GameManager.States.Attack)
+        {
+            GameManager.instance.PlayerScript.CurrentHealth--;
+        }
+        Destroy(gameObject);
+    }
+
+    void Clear()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnMouseEnter()
     {
         IsMouseOver = true;

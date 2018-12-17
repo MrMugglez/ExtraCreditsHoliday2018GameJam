@@ -13,5 +13,25 @@ public class Enemy : CharacterBase
     public override void Attack()
     {
         Debug.Log("I'm gunna getcha!");
+        Vector2 direction = RandomNormalizedVector();
+        Vector2 offset = direction * m_offsetDistanceMultiplier;
+        var attack = Instantiate(TargetPrefab, (Vector2)transform.position + offset, Quaternion.identity);
+        attack.GetComponent<Target>().Init(GameManager.States.Attack, alignment, -direction, GameManager.instance.transform.position);
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        if (IsDead)
+        {
+            GameManager.instance.Score += 100;
+            GameManager.instance.NextFight();
+            GameManager.instance.Level++;
+            Destroy(gameObject);
+        }
+    }
+    public void CanAttack(bool attack)
+    {
+        canAttack = true;
     }
 }
