@@ -1304,36 +1304,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: m_damageSounds.Array.size
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: m_attackSounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: m_defenceSounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: AttackSound.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: DamageSound.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: DefenceSound.m_PersistentCalls.m_Calls.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4494162236254004, guid: d466bf270519a8242aa089df8a1a0de4, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1366,91 +1336,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: AttackSound.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: AttackSound.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: DefenceSound.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: DefenceSound.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: DamageSound.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: DamageSound.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: DamageSound.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8300000, guid: 484768cf887eeb641a59980359245e55, type: 3}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: AttackSound.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8300000, guid: 8d684350b723e174daa31c0662adb42a, type: 3}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: DefenceSound.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 8300000, guid: 760ecfafffb90d242bc0b4e1f525d380, type: 3}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: m_damageSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 484768cf887eeb641a59980359245e55, type: 3}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: m_damageSounds.Array.data[1]
-      value: 
-      objectReference: {fileID: 8300000, guid: 81bf7636451d1ea4099b75ae13abe887, type: 3}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: m_damageSounds.Array.data[2]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8d774eb5cdecb424293642e2818a4a97, type: 3}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: m_damageSounds.Array.data[3]
-      value: 
-      objectReference: {fileID: 8300000, guid: 08e38e96c571ca54a81da7de5b532ee2, type: 3}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: m_damageSounds.Array.data[4]
-      value: 
-      objectReference: {fileID: 8300000, guid: e5ab78f6a5537d04d91c4e45dd9770c6, type: 3}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: m_damageSounds.Array.data[5]
-      value: 
-      objectReference: {fileID: 8300000, guid: bcedce0c3bea1be4fb434de51fdfc960, type: 3}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: m_attackSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 8d684350b723e174daa31c0662adb42a, type: 3}
-    - target: {fileID: 114793942746469482, guid: d466bf270519a8242aa089df8a1a0de4,
-        type: 2}
-      propertyPath: m_defenceSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 760ecfafffb90d242bc0b4e1f525d380, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d466bf270519a8242aa089df8a1a0de4, type: 2}
   m_IsPrefabParent: 0

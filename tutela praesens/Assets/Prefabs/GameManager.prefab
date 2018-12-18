@@ -51,8 +51,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aef5ca5f3732dc74190003260795e9be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Level: 1
+  Score: 0
+  GameOver: 1
   m_timeTillStart: 1
   RoundStart:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  RoundNext:
     m_PersistentCalls:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
@@ -66,3 +74,29 @@ MonoBehaviour:
     type: 2}
   EnemyPrefab: {fileID: 1955552868670926, guid: 6ab39d209e454614e89d28e3586e525c,
     type: 2}
+  AttackSound:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DefenceSound:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  DamageSound:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_attackSounds:
+  - {fileID: 8300000, guid: 8d684350b723e174daa31c0662adb42a, type: 3}
+  m_defenceSounds:
+  - {fileID: 8300000, guid: 760ecfafffb90d242bc0b4e1f525d380, type: 3}
+  m_damageSounds:
+  - {fileID: 8300000, guid: 484768cf887eeb641a59980359245e55, type: 3}
+  - {fileID: 8300000, guid: 81bf7636451d1ea4099b75ae13abe887, type: 3}
+  - {fileID: 8300000, guid: 8d774eb5cdecb424293642e2818a4a97, type: 3}
+  - {fileID: 8300000, guid: 08e38e96c571ca54a81da7de5b532ee2, type: 3}
+  - {fileID: 8300000, guid: e5ab78f6a5537d04d91c4e45dd9770c6, type: 3}
+  - {fileID: 8300000, guid: bcedce0c3bea1be4fb434de51fdfc960, type: 3}
