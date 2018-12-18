@@ -60,6 +60,24 @@ public class GameManager : MonoBehaviour
     [System.Obsolete("No longer supported")]
     private float m_mouseMovementVelocity;
 
+    [Header("Sound Manager")]
+    private AudioSource as_Attack;
+    private AudioSource as_Defence;
+    private AudioSource as_Damage;
+    [HideInInspector]
+    public UnityEvent AttackSound;
+    [HideInInspector]
+    public UnityEvent DefenceSound;
+    [HideInInspector]
+    public UnityEvent DamageSound;
+
+    [SerializeField]
+    private AudioClip[] m_attackSounds;
+    [SerializeField]
+    private AudioClip[] m_defenceSounds;
+    [SerializeField]
+    private AudioClip[] m_damageSounds;
+
     private void Awake()
     {
         if (instance == null)
@@ -78,6 +96,9 @@ public class GameManager : MonoBehaviour
             GameStart(SceneManager.GetActiveScene(), LoadSceneMode.Single);
         }*/
         SceneManager.sceneLoaded += SceneLoad;
+        AttackSound.AddListener(PlayAttackSound);
+        DefenceSound.AddListener(PlayDefenceSound);
+        DamageSound.AddListener(PlayDamageSound);
     }
 
     //this isn't being used anywhere...
@@ -125,6 +146,11 @@ public class GameManager : MonoBehaviour
             Score = 0;
             RoundEnd.AddListener(EndFight);
             Invoke("StartFight", m_timeTillStart);
+
+            as_Attack = new GameObject().AddComponent<AudioSource>();
+            as_Defence = new GameObject().AddComponent<AudioSource>();
+            as_Damage = new GameObject().AddComponent<AudioSource>();
+            as_Defence.volume = 0.2f;
         }
         else
         {
@@ -172,6 +198,27 @@ public class GameManager : MonoBehaviour
     public void LoadGameOver()
     {
         SceneManager.LoadScene(GAMEOVER);
+    }
+
+    private void PlayAttackSound()
+    {
+        int temp = Random.Range(0, m_attackSounds.Length);
+        as_Attack.clip = m_attackSounds[temp];
+        as_Attack.Play();
+    }
+
+    private void PlayDefenceSound()
+    {
+        int temp = Random.Range(0, m_defenceSounds.Length);
+        as_Defence.clip = m_defenceSounds[temp];
+        as_Defence.Play();
+    }
+
+    private void PlayDamageSound()
+    {
+        int temp = Random.Range(0, m_damageSounds.Length);
+        as_Damage.clip = m_damageSounds[temp];
+        as_Damage.Play();
     }
 
     #region No Longer Used
